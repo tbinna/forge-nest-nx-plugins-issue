@@ -35,6 +35,7 @@
         "targetName": "test"
       },
       "exclude": ["nest-app-e2e/**/*"]
-    }
+    },
+    "@toolsplus/nx-forge"
   ]
 }

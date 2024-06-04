@@ -1,0 +1,41 @@
+{
+  "name": "forge-app",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "forge-app/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "register": {
+      "executor": "@toolsplus/nx-forge:register",
+      "options": {
+        "outputPath": "dist/forge-app"
+      }
+    },
+    "build": {
+      "executor": "@toolsplus/nx-forge:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/forge-app",
+        "webpackConfig": "forge-app/webpack.config.js"
+      }
+    },
+    "serve": {
+      "executor": "@toolsplus/nx-forge:tunnel",
+      "options": {
+        "outputPath": "dist/forge-app"
+      }
+    },
+    "deploy": {
+      "executor": "@toolsplus/nx-forge:deploy",
+      "options": {
+        "outputPath": "dist/forge-app"
+      }
+    },
+    "install": {
+      "executor": "@toolsplus/nx-forge:install",
+      "options": {
+        "outputPath": "dist/forge-app"
+      }
+    }
+  }
+}
