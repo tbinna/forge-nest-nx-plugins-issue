@@ -1,5 +1,30 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "package": {
+      "dependsOn": ["build"],
+      "executor": "@toolsplus/nx-forge:package",
+      "options": {
+        "outputPath": "dist/{projectRoot}"
+      }
+    },
+    "deploy": {
+      "dependsOn": ["package"]
+    },
+    "forge": {
+      "dependsOn": ["package"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "forge",
+        "cwd": "dist/{projectRoot}"
+      }
+    }
+  },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [

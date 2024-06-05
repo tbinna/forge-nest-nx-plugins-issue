@@ -12,21 +12,27 @@
       }
     },
     "build": {
-      "executor": "@toolsplus/nx-forge:build",
+      "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/forge-app",
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/forge-app/src",
+        "main": "forge-app/src/index.ts",
+        "outputFileName": "index.js",
+        "tsConfig": "forge-app/tsconfig.app.json",
+        "assets": [],
         "webpackConfig": "forge-app/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
       }
     },
+    "package": {},
     "serve": {
       "executor": "@toolsplus/nx-forge:tunnel",
-      "options": {
-        "outputPath": "dist/forge-app"
-      }
-    },
-    "deploy": {
-      "executor": "@toolsplus/nx-forge:deploy",
       "options": {
         "outputPath": "dist/forge-app"
       }
